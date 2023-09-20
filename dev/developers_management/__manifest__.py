@@ -5,5 +5,6 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/developer.xml',
+        'views/company.xml',
     ]
 }

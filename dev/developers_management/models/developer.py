@@ -15,6 +15,8 @@ class Developer(models.Model):
     email = fields.Char(string='email')
     address = fields.Text(string='address')
     birthday = fields.Date(string='date')
+    company_id = fields.Many2one('company', string='Company')
+    position = fields.Char(string='Position')
 
     @api.depends('name', 'type')
     def compute_global_identification(self):
