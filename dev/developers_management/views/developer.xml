@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_developer_form" model="ir.ui.view">
+        <field name="name">developer.form</field>
+        <field name="model">developer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="type"/>
+                        <field name="global_identification"/>
+                        <field name="phone" attrs="{'invisible': [('type', '=', 'out-stuff')]}"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                        <field name="birthday"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_developer_tree" model="ir.ui.view">
+        <field name="name">developer.tree</field>
+        <field name="model">developer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="global_identification"/>
+                <field name="phone" attrs="{'invisible': [('type', '=', 'out-stuff')]}"/>
+                <field name="email"/>
+                <field name="address"/>
+                <field name="birthday"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_developer" model="ir.actions.act_window">
+        <field name="name">Developers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">developer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_developers"
+              name="Developers"
+              parent="menu_developer_operations"
+              action="action_developer"
+              sequence="10"/>
+
+</odoo>
