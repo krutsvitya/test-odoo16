@@ -1,10 +1,11 @@
 from odoo import api, fields, models
+from odoo.odoo.exceptions import ValidationError
 
 
 class Developer(models.Model):
     _name = 'developer'
 
-    name = fields.Char(string='name', required=True, unique=True)
+    name = fields.Char(string='name', required=True)
     type = fields.Selection([('front-end', 'Front-end'),
                              ('backend', 'Backend'),
                              ('fullstack', 'Fullstack'),
@@ -28,3 +29,21 @@ class Developer(models.Model):
         for developer in self:
             if developer.type == 'out-staff':
                 developer.phone = False
+
+    @api.constrains('name')
+    def _check_name(self):
+        for developer in self:
+            if developer.name and not developer.name.istitle():
+                raise ValidationError("Each word in the name should start with a capital letter.")
+
+    @api.constrains('phone')
+    def _check_phone(self):
+        for developer in self:
+            if developer.phone and '+' not in developer.phone:
+                raise ValidationError("Phone number should contain a '+' symbol.")
+
+    @api.constrains('email')
+    def _check_email(self):
+        for developer in self:
+            if developer.email and '@' not in developer.email:
+                raise ValidationError("Email address should contain an '@' symbol.")

@@ -8,7 +8,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <field name="name" modifiers='{"unique": true}' />
                         <field name="address"/>
                         <field name="developers" widget="many2many_tags" options="{'no_create': True}"/>
                     </group>

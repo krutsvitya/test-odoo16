@@ -8,7 +8,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <field name="name" modifiers='{"unique": true}' />
                         <field name="type"/>
                         <field name="global_identification"/>
                         <field name="phone" attrs="{'invisible': [('type', '=', 'out-stuff')]}"/>
