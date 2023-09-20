@@ -41,13 +41,23 @@
         <field name="name">Developers</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">developer</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="action_add_developer" model="ir.actions.act_window">
+        <field name="name">Add Developers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">developer</field>
+        <field name="view_mode">form</field>
     </record>
 
     <menuitem id="menu_developers"
-              name="Developers"
-              parent="menu_developer_operations"
+              name="Add Developers"
+              action="action_add_developer"
+              sequence="9"/>
+
+    <menuitem id="menu_developer_root"
+              name="View Developers"
               action="action_developer"
               sequence="10"/>
-
 </odoo>
